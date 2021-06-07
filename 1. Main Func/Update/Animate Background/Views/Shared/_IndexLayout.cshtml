@@ -1,0 +1,92 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- require meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- title -->
+    <title></title>
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/hamburger.css" />
+    <!-- icon -->
+    <link rel="icon" type="image/png" href="Link">
+</head>
+<body onload="loadPage()" id="body">
+
+<div class="all-load">
+    <div class="load-page" id="load-page">
+        <div class="word">UTA95S MOVIE....</div>
+        <div class="overlay"></div>
+    </div>
+</div>
+
+
+<div class="page-container" id="page-body">
+    <div class="content">
+        @RenderBody()
+    </div>
+</div>
+
+<script src="lib/download/jquery3.6.0/jquery.min.js"></script>
+<script src="lib/download/lettering0.7.0/jquery.lettering.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/site.js"></script>
+<script>
+    var setTime;
+    function loadPage() {
+        var body = document.getElementById('body');
+        setTime = setTimeout(showPage, 4500);
+        body.style.background = 'none';
+    }
+    function showPage() {
+        document.getElementById("load-page").style.display = "none";
+        document.getElementById("page-body").style.display = "block";
+    }
+    $(document).ready(function(){
+        $("#overlay").click(function(){
+            $("#button-nav").removeClass("is-active");
+        });
+    });
+
+    let stars = document.getElementById('star');
+    let half_moon = document.getElementById('halfmoon');
+    let cloud = document.getElementById('cloud');
+    let grass2 = document.getElementById('grass2');
+    let tree = document.getElementById('tree');
+    let grass1 = document.getElementById('grass1');
+    let screen = document.getElementById('screen');
+    let people = document.getElementById('people');
+    let grass3 = document.getElementById('grass3');
+    //window scroll events
+    window.addEventListener('scroll',
+        function() {
+            let value = window.scrollY;
+            if (value < 450) {
+                stars.style.left = value * 0.3 + 'px';
+                cloud.style.left = value * 0.25 + 'px';
+                half_moon.style.marginTop = value/15 + '%';
+                grass2.style.marginTop = value/5 + 'px';
+                tree.style.marginTop = value/3 + 'px';
+            }
+            console.log(value);
+        });
+
+    $(document).ready(function() {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $("#people").css({ "opacity": "0" });
+            } else {
+                $("#people").css({ "opacity": "1" });
+            }
+        });
+    });
+</script>
+</body>
+</html>
